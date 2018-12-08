@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    h1 
+        b #{dados.nome}
+    br
+    br
+    form(method="POST", action="/usuarios/show/#{dados._id}", role="form")
+        div(class="form-group")
+            label E-mail
+            input(type="email",class="form-control", name="email", value="#{dados.email}", disabled)
+    form(method="POST", action="/usuarios/delete/#{dados._id}", role="form", id="excluir-form")
+        button(type="submit", class="btn btn-danger") Excluir
+        span &nbsp;
+        a(href="/usuarios"  class="btn btn-primary") Voltar
+
+block scripts
+    script(type="text/javascript").
+        $(function(){
+            $('#excluir-form').submit(function(){
+                var pergunta = confirm('Deseja excluir Usuário?');
+                if(!pergunta){
+                    return false;
+                }
+            })
+        })

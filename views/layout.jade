@@ -1,0 +1,22 @@
+doctype html
+html
+head
+	meta(charset="utf-8")
+	meta(name="viewport" content="width=device-width, initial-scale=1")
+	title= title
+	link(rel="stylesheet", href="/css/bootstrap.min.css")
+	link(rel="stylesheet", href="/css/bootstrap-aux.css")
+body
+	div(class="container")
+		if isLogged
+			div(class="masthead")
+				h3(class="text-muted") Projeto Nolde JS
+				include partials/menu
+		block content
+
+		if isLogged
+			include partials/footer
+
+	script(src="/js/jquery.min.js")
+	script(src="/js/bootstrap.min.js")
+	block scripts
